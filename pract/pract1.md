@@ -38,7 +38,7 @@
 ## Задача 8
 
 Написать программу, которая находит все файлы в данном каталоге с расширением, указанным в качестве аргумента и архивирует все эти файлы в архив tar.
-![alt text](https://sun9-15.userapi.com/impg/wo86wcA3DNmo_UX1CY83A60-MY4XnoWzRuJ0Iw/PzgZUCFFAAA.jpg?size=1631x329&quality=96&sign=2b624039fd7713666a3912311720c853&type=album)
+![alt text]([https://sun9-15.userapi.com/impg/wo86wcA3DNmo_UX1CY83A60-MY4XnoWzRuJ0Iw/PzgZUCFFAAA.jpg?size=1631x329&quality=96&sign=2b624039fd7713666a3912311720c853&type=album](https://sun9-26.userapi.com/impg/LERnWL57Dg3bgE1pnCf-I9vPN3G4-T1MZWKrTg/7y6L6sjAtbY.jpg?size=1695x261&quality=96&sign=6c8b1bcdd15c7b46ed9a1f10689c9495&type=album))
 ## Задача 9
 
 Написать программу, которая заменяет в файле последовательности из 4 пробелов на символ табуляции. Входной и выходной файлы задаются аргументами.
