@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import tarfile
 import csv
@@ -12,7 +12,7 @@ class ShellEmulator:
         self.username = username
         self.vfs_path = vfs_path
         self.log_path = log_path
-        self.current_directory = '\\'
+        self.current_directory = '/'
         self.start_time = datetime.now()
         self.tmp_dir = 'tmp'
         self.load_virtual_file_system()
@@ -61,7 +61,7 @@ class ShellEmulator:
             return "Ошибка: команда не распознана"
 
     def ls(self):
-        path = os.path.join(self.tmp_dir, self.current_directory.strip('\\'))
+        path = os.path.join(self.tmp_dir, self.current_directory.strip('/'))
         if os.path.exists(path):
             entries = os.listdir(path)
             if entries:
@@ -75,14 +75,14 @@ class ShellEmulator:
         if path is None:
             return "Ошибка: неверное использование команды 'cd'"
         if path == "..":
-            if self.current_directory != '\\':
-                self.current_directory = os.path.dirname(self.current_directory.rstrip('\\'))
+            if self.current_directory != '/':
+                self.current_directory = os.path.dirname(self.current_directory.rstrip('/'))
                 if not self.current_directory:
-                    self.current_directory = '\\'
+                    self.current_directory = '/'
             return f"Перешел в {self.current_directory}"
         else:
             new_directory = os.path.join(self.current_directory, path)
-            full_path = os.path.join(self.tmp_dir, new_directory.strip('\\'))
+            full_path = os.path.join(self.tmp_dir, new_directory.strip('/'))
             if os.path.isdir(full_path):
                 self.current_directory = os.path.normpath(new_directory)
                 return f"Перешел в {self.current_directory}"
@@ -92,7 +92,7 @@ class ShellEmulator:
     def touch(self, filename=None):
         if filename is None:
             return "Ошибка: не указано имя файла"
-        full_path = os.path.join(self.tmp_dir, self.current_directory.strip('\\'), filename)
+        full_path = os.path.join(self.tmp_dir, self.current_directory.strip('/'), filename)
         try:
             open(full_path, 'a').close()
             return f"Создан файл {filename}"
@@ -102,7 +102,7 @@ class ShellEmulator:
     def rmdir(self, path=None):
         if path is None:
             return "Ошибка: не указана директория"
-        full_path = os.path.join(self.tmp_dir, self.current_directory.strip('\\'), path)
+        full_path = os.path.join(self.tmp_dir, self.current_directory.strip('/'), path)
         if os.path.isdir(full_path):
             try:
                 os.rmdir(full_path)
