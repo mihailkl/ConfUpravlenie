@@ -1,4 +1,4 @@
-﻿# test_emulator.py
+# test_emulator.py
 import unittest
 import os
 import sys
@@ -15,11 +15,11 @@ class TestShellEmulator(unittest.TestCase):
         self.tmp_dir = 'tmp'
         if os.path.exists(self.tmp_dir):
             shutil.rmtree(self.tmp_dir)
-        os.makedirs('test_vfs_dir\\sub_dir', exist_ok=True)
-        with open('test_vfs_dir\\test_file.txt', 'w') as f:
+        os.makedirs('test_vfs_dir/sub_dir', exist_ok=True)
+        with open('test_vfs_dir/test_file.txt', 'w') as f:
             f.write('Sample text')
         with tarfile.open(self.vfs_path, 'w') as tar:
-            tar.add('test_vfs_dir\\', arcname='\\')
+            tar.add('test_vfs_dir/', arcname='/')
         shutil.rmtree('test_vfs_dir')
         self.log_path = 'test_log.csv'
         self.username = 'test_user'
@@ -47,26 +47,26 @@ class TestShellEmulator(unittest.TestCase):
         self.assertEqual(output, 'Пустая директория')
 
     def test_ls_nonexistent_directory(self):
-        self.emulator.current_directory = '\\nonexistent'
+        self.emulator.current_directory = '/nonexistent'
         output = self.emulator.ls()
         self.assertEqual(output, 'Ошибка: директория не найдена')
 
     # Тесты для команды cd
     def test_cd_to_subdirectory(self):
         output = self.emulator.cd('sub_dir')
-        self.assertEqual(output, 'Перешел в \\sub_dir')
-        self.assertEqual(self.emulator.current_directory, '\\sub_dir')
+        self.assertEqual(output, 'Перешел в /sub_dir')
+        self.assertEqual(self.emulator.current_directory, '/sub_dir')
 
     def test_cd_to_parent_directory(self):
-        self.emulator.current_directory = '\\sub_dir'
+        self.emulator.current_directory = '/sub_dir'
         output = self.emulator.cd('..')
-        self.assertEqual(output, 'Перешел в \\')
-        self.assertEqual(self.emulator.current_directory, '\\')
+        self.assertEqual(output, 'Перешел в /')
+        self.assertEqual(self.emulator.current_directory, '/')
 
     def test_cd_nonexistent_directory(self):
         output = self.emulator.cd('nonexistent')
         self.assertEqual(output, 'Ошибка: директория не найдена')
-        self.assertEqual(self.emulator.current_directory, '\\')
+        self.assertEqual(self.emulator.current_directory, '/')
 
     # Тесты для команды touch
     def test_touch_create_file(self):
@@ -161,7 +161,7 @@ class TestShellEmulator(unittest.TestCase):
         with self.assertRaises(SystemExit):
             self.emulator.execute_command('exit')
         # Проверяем, что текущая директория сброшена
-        self.assertEqual(self.emulator.current_directory, '\\sub_dir')
+        self.assertEqual(self.emulator.current_directory, '/sub_dir')
 
     # Тесты на обработку неверных команд
     def test_invalid_command(self):
