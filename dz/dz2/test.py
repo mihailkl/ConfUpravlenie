@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from viz_deps import fetch_dependencies, build_dot_representation
+from viz_deps import fetch_dependencies, build_graph
 
 class TestDependencyVisualizer(unittest.TestCase):
 
@@ -12,15 +12,10 @@ class TestDependencyVisualizer(unittest.TestCase):
         self.assertIn('requests', dependencies)
         self.assertListEqual(dependencies['requests'], ['certifi', 'urllib3'])
 
-    def test_dot_representation_building(self):
-        dot_content = build_dot_representation({'requests': ['certifi', 'urllib3']})
-        expected_content = (
-            'digraph {\n'
-            '    "requests" -> "certifi"\n'
-            '    "requests" -> "urllib3"\n'
-            '}\n'
-        )
-        self.assertEqual(dot_content, expected_content)
+    def test_graph_building(self):
+        graph = build_graph({'requests': ['certifi', 'urllib3']})
+        self.assertIn('requests -> certifi', graph.source)
+        self.assertIn('requests -> urllib3', graph.source)
 
 if __name__ == '__main__':
     unittest.main()
