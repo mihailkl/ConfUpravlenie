@@ -39,7 +39,7 @@ def build_graph(dependencies):
 def visualize_dependencies(program_path, package, output_path, max_depth):
     deps, _ = fetch_dependencies(package, max_depth)
     graph = build_graph(deps)
-    graph_path = f"{output_path}/{package}_dependencies.dot"
+    graph_path = f"{output_path}/{package}_dep.dot"
     graph.save(graph_path)
     print(f"{program_path} has generated a graph at {graph_path}")
 
