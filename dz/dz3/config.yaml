@@ -1,0 +1,20 @@
+server_config:
+  ip_address: "192.168.0.1"
+  port: 22
+  authorized_keys:
+    - admin: "user@domain"
+
+game_preferences:
+  resolution: "1920x1200"
+  fullscreen: true
+  key_bindings:
+    jump: "Space"
+    shoot: "LeftCtrl"
+  difficulty: "veteran"
+
+database:
+  type: "PostgreSQL"
+  host: "localhost"
+  port: 5432
+  username: "dbUser"
+  password: "dbPass"
