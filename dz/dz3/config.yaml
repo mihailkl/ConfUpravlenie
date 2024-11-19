@@ -18,3 +18,6 @@ database:
   port: 5432
   username: "dbUser"
   password: "dbPass"
+array_min: "#[min 5 10 1 500]"
+array_max: "#[max 1 2 5000 100]"
+array_sum: "#[+ 1 2 3 4 5 6 7 8 9 10]"
