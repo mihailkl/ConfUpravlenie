@@ -1,0 +1,1 @@
+python interpreter.py test_program.bin results_test_program.json "1000:1007"
