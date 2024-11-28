@@ -22,6 +22,8 @@ python interpreter.py test_program.bin results_test_program.json "1000:1007"
 assembler.py                            # Файл с преобразованием ассемблера в бин файл
 interpreter.py                          # Файл с интепретацией бин файла
 test_program.asm                        # Файл с ассемблером программой
+run_assembler.cmd                       # Файл с запуском ассемблера с командной строкой
+run_interpreter.cmd                     # Файл с запуском интепретатора с командной строкой
 ```
 
 # 4. Запуск тестов
